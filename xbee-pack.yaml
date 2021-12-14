@@ -1,0 +1,26 @@
+schema-version: 1.0
+
+description: |
+  The Expat package contains a stream oriented C library for parsing XML.
+
+  Installed program: xmlwf
+  Installed libraries: libexpat.so
+  Installed directory: /usr/share/doc/expat-2.4.1
+
+  xmlwf: Is a non-validating utility to check whether or not XML documents are well formed
+  libexpat: Contains API functions for parsing XML
+  
+builder:
+  origin: ./expat-builder
+  var:
+    version: "{% version %}"
+
+
+var:
+  version: 2.4.1
+
+
+provision:
+  - copy:
+      builder: expat
+      todir: /usr
