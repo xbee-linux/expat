@@ -7,10 +7,6 @@ const:
   srcDir: /usr/src
   exportDir: /opt/expat
 
-
-var:
-  version: 2.4.1
-
 provision:
   - url:
       from: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{% version %}.tar.xz
@@ -19,13 +15,13 @@ provision:
 build:
   - shell:
       cmds:
-        - ./configure --prefix={% exportDir %}
+        - ./configure --prefix=/usr
             --disable-static
-            --docdir={% exportDir %}/share/doc/expat-{% version %}
+            --docdir=/usr/share/doc/expat-{% version %}
         - make
 #        - make check
-        - make install
-        - install -v -m644 doc/*.{html,png,css} {% exportDir %}/share/doc/expat-{% version %}
+        - make install DESTDIR={% exportDir %}
+        - install -v -m644 doc/*.{html,png,css} {% exportDir %}/usr/share/doc/expat-{% version %}
       directory: "{% srcDir %}/expat-{% version %}"
   - export: "{% exportDir %}"
 

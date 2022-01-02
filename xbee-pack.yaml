@@ -10,10 +10,7 @@ description: |
   xmlwf: Is a non-validating utility to check whether or not XML documents are well formed
   libexpat: Contains API functions for parsing XML
   
-builder:
-  origin: ./expat-builder
-  var:
-    version: "{% version %}"
+builder: ./expat-builder
 
 
 var:
@@ -23,4 +20,4 @@ var:
 provision:
   - copy:
       builder: expat
-      todir: /usr
+      todir: /
