@@ -1,5 +1,7 @@
 schema-version: 1.0
 
+type: builder
+
 description: |
   The Expat package contains a stream oriented C library for parsing XML.
 
@@ -10,14 +12,25 @@ description: |
   xmlwf: Is a non-validating utility to check whether or not XML documents are well formed
   libexpat: Contains API functions for parsing XML
   
-builder: ./expat-builder
-
-
-var:
+in:
   version: 2.4.1
 
 
 provision:
-  - copy:
-      builder: expat
-      todir: /
+  - url:
+      from: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{% version %}.tar.xz
+      todir: "{% xbeeSrc %}"
+
+build:
+  - shell:
+      cmds:
+        - ./configure --prefix=/usr
+            --disable-static
+            --docdir=/usr/share/doc/expat-{% version %}
+        - make
+#        - make check
+        - make install DESTDIR={% xbeeOut %}
+        - install -v -m644 doc/*.{html,png,css} {% xbeeOut %}/usr/share/doc/expat-{% version %}
+      directory: "{% xbeeSrc %}/expat-{% version %}"
+
+
