@@ -19,7 +19,7 @@ var:
 provision:
   - url:
       from: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{{ .version }}.tar.xz
-      todir: "{{ .xbeeSrc }}"
+      todir: "{{ .xbee.src }}"
 
 build:
   - shell:
@@ -29,8 +29,8 @@ build:
             --docdir=/usr/share/doc/expat-{{ .version}}
         - make
 #        - make check
-        - make install DESTDIR={{ .xbeeOut}}
-        - install -v -m644 doc/*.{html,png,css} {{ .xbeeOut }}/usr/share/doc/expat-{{ .version}}
-      directory: "{{ .xbeeSrc }}/expat-{{ .version }}"
+        - make install DESTDIR={{ .xbee.out}}
+        - install -v -m644 doc/*.{html,png,css} {{ .xbee.out }}/usr/share/doc/expat-{{ .version}}
+      directory: "{{ .xbee.src }}/expat-{{ .version }}"
 
 
