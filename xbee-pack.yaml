@@ -17,9 +17,7 @@ var:
 
 
 provision:
-  - url:
-      from: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{{ .version }}.tar.xz
-      todir: "{{ .xbee.src }}"
+  - url: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{{ .version }}.tar.xz
 
 build:
   - shell:
