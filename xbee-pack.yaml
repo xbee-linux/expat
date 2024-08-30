@@ -13,7 +13,8 @@ description: |
   libexpat: Contains API functions for parsing XML
   
 var:
-  version: 2.4.1
+  xbee:
+    version: 2.4.1
 
 
 provision:
