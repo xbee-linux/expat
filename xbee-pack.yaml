@@ -18,18 +18,18 @@ var:
 
 
 provision:
-  - url: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{{ .version }}.tar.xz
+  - url: https://github.com/libexpat/libexpat/releases/download/R_2_4_1/expat-{{ .xbee.version }}.tar.xz
 
 build:
   - shell:
       cmds:
         - ./configure --prefix=/usr
             --disable-static
-            --docdir=/usr/share/doc/expat-{{ .version}}
+            --docdir=/usr/share/doc/expat-{{ .xbee.version}}
         - make
 #        - make check
         - make install DESTDIR={{ .xbee.out}}
-        - install -v -m644 doc/*.{html,png,css} {{ .xbee.out }}/usr/share/doc/expat-{{ .version}}
-      directory: "{{ .xbee.src }}/expat-{{ .version }}"
+        - install -v -m644 doc/*.{html,png,css} {{ .xbee.out }}/usr/share/doc/expat-{{ .xbee.version}}
+      directory: "{{ .xbee.src }}/expat-{{ .xbee.version }}"
 
 
