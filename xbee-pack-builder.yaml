@@ -1,7 +1,5 @@
 schema-version: 1.0
 
-type: builder
-
 description: |
   The Expat package contains a stream oriented C library for parsing XML.
 
