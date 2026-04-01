@@ -20,7 +20,7 @@ provision:
 
 build:
   - shell:
-      cmds:
+      cmd:
         - ./configure --prefix=/usr
             --disable-static
             --docdir=/usr/share/doc/expat-{{ .xbee.version}}
